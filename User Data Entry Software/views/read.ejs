@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <div class="w-full bg-white p-2 text-black flex justify-around ">
+        <h1 class=" text-2xl font-bold">My Website</h1>
+        <ul class="flex flex-wrap gap-3 text-2xl">
+            <li ><a href="/">Home</a></li>
+            <li ><a href="/read">Show Data</a></li>
+        </ul>
+    </div>    
+    
+    <div class="read w-full ">
+        <% if(users.length > 0){ %>
+            <% users.forEach((user) => { %>
+                
+                
+            <div class="users h-[410px] text-white m-3 w-[283px] p-5 border-white border-2 rounded-md  ">
+
+                <div class="user max-w-full mt-3 p-4 border-2">
+                    <div class="w-full h-52 rounded-md bg-zinc-500">
+                        <img src="<%= user.image %>"  class="w-full h-full object-cover" alt="">
+                    </div>
+                </div>
+                <h3 class="text-2xl text text-center m-1 "><%= user.name %></h3>
+                <h5 class="text-xl text-center m-1 overflow-hidden  "><%= user.email %></h5>
+                   
+                <div class="flex gap-3 mr-4">
+                    <a href="/delete/<%=user._id%>" class="px-10  text-white bg-yellow-500 py-2 border-2 border-black outline-none rounded-md">Delete</a>
+                    <a href="/edit/<%=user._id%>" class="px-10  text-white bg-yellow-500 py-2 border-2 border-black outline-none rounded-md">Edit</a>
+                </div>
+            </div>
+
+            <% }) %>
+        <% } else { %>
+            <h3 class="text-center w-full text-white mt-10 font-bold text-2xl">No User Data Available Yet</h3>
+        <% } %>
+     </div>
+    <script src="/javascripts/index.js"></script>
+</body>
+</html>
